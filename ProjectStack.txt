@@ -1,0 +1,81 @@
+import java.util.Scanner;
+import java.util.Stack;
+public class ProjectStack {
+    static int top = -1;
+    static String[] stack = new String[10];
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        while (true) {
+            System.out.println("Welcome to Computer Parts Tracking System!");
+            System.out.println("Please select an option:");
+            System.out.println("1. Add a computer part");
+            System.out.println("2. Remove a computer part");
+            System.out.println("3. Display top computer part");
+            System.out.println("4. Display all computer parts");
+            System.out.println("5. Quit");
+
+            choice = sc.nextInt();
+            switch (choice) {
+                case 1:
+                    if (top == 9) {
+                        System.out.println("Error: Stack overflow!");
+                    } else {
+                        System.out.println("Enter a computer part:");
+                        String part = sc.next();
+                        push(part);
+                    }
+                    break;
+                case 2:
+                    if (top == -1) {
+                        System.out.println("Error: Stack underflow!");
+                    } else {
+                        pop();
+                    }
+                    break;
+                case 3:
+                    if (top == -1) {
+                        System.out.println("Error: Stack underflow!");
+                    } else {
+                        peek();
+                    }
+                    break;
+                case 4:
+                    if (top == -1) {
+                        System.out.println("Error: Stack underflow!");
+                    } else {
+                        display();
+                    }
+                    break;
+                case 5:
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
+    }
+
+    static void push(String part) {
+        top++;
+        stack[top] = part;
+        System.out.println(part + " added to stack.");
+    }
+
+    static void pop() {
+        String removed_part = stack[top];
+        top--;
+        System.out.println(removed_part + " removed from stack.");
+    }
+
+    static void peek() {
+        String top_part = stack[top];
+        System.out.println(top_part + " is at top of stack.");
+    }
+
+    static void display() {
+        for (int i = top; i >= 0; i--) {
+            System.out.println(stack[i]);
+        }
+    }
+}
