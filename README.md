@@ -1,4 +1,4 @@
-Program that calculates the mortgage in a GUI enviroment.
+A Program that calculates the mortgage in a GUI enviroment.
 
 
 
